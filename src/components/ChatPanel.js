@@ -93,22 +93,6 @@ export default function ChatPanel({ conversation, messages, onSendMessage }) {
 
   return (
     <section className="chat-panel" aria-label={`Conversation ${conversation.name}`}>
-      <header className="chat-panel__header">
-        <div>
-          <h1 className="chat-panel__title">{conversation.name}</h1>
-          <p className="chat-panel__subtitle">{conversation.description}</p>
-        </div>
-        <dl className="chat-panel__stats">
-          <div>
-            <dt>Members</dt>
-            <dd>{conversation.members}</dd>
-          </div>
-          <div>
-            <dt>Topic</dt>
-            <dd>{conversation.topic}</dd>
-          </div>
-        </dl>
-      </header>
       <div className="chat-panel__messages" ref={scrollRef}>
         {groupedMessages.map((group) =>
           group.type === 'day' ? (
