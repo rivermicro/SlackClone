@@ -73,9 +73,11 @@ textarea {
 
 .page {
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: var(--color-bg-page);
+  overflow: hidden;
 }
 
 .top-nav {
@@ -203,11 +205,13 @@ textarea {
 .workspace {
   flex: 1;
   min-height: 0;
+  height: 100%;
   display: grid;
   grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08));
   gap: 1px;
   position: relative;
+  overflow: hidden;
 }
 
 .workspace--collapsed {
@@ -220,6 +224,8 @@ textarea {
   flex-direction: column;
   gap: 1.75rem;
   padding: 1.5rem;
+  height: 100%;
+  min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) transparent;
@@ -352,50 +358,9 @@ textarea {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  height: 100%;
   border-left: 1px solid var(--color-border);
-}
-
-.chat-panel__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 1.75rem 2.5rem 1.25rem;
-  border-bottom: 1px solid var(--color-border);
-  backdrop-filter: blur(10px);
-}
-
-.chat-panel__title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.chat-panel__subtitle {
-  margin: 0.45rem 0 0;
-  color: var(--color-text-secondary);
-  max-width: 40ch;
-}
-
-.chat-panel__stats {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 1.5rem;
-  margin: 0;
-}
-
-.chat-panel__stats dt {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-}
-
-.chat-panel__stats dd {
-  margin: 0.25rem 0 0;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  overflow: hidden;
 }
 
 .chat-panel__messages {
@@ -615,16 +580,12 @@ textarea {
     box-shadow: var(--shadow-floating);
     border: 1px solid var(--color-border);
     z-index: 20;
+    height: auto;
+    max-height: calc(100% - 2.5rem);
   }
 
   .workspace--collapsed > .sidebar {
     display: none;
-  }
-
-  .chat-panel__header {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
   }
 
   .chat-panel__messages {
@@ -649,6 +610,7 @@ textarea {
   .workspace > .sidebar {
     width: calc(100% - 1.5rem);
     margin: 0.75rem;
+    max-height: calc(100% - 1.5rem);
   }
 
   .message {
@@ -661,8 +623,4 @@ textarea {
     height: 36px;
   }
 
-  .chat-panel__stats {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
   }
-}
